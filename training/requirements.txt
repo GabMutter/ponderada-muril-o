@@ -1,0 +1,5 @@
+prophet==1.2.1
+yfinance==0.2.66
+pandas==2.3.3
+numpy==2.3.4
+matplotlib==3.10.7

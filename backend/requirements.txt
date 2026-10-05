@@ -1,0 +1,5 @@
+fastapi==0.119.1
+uvicorn==0.38.0
+prophet==1.2.1
+pandas==2.3.3
+numpy==2.3.4

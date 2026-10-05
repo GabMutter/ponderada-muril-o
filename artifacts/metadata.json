@@ -1,0 +1,56 @@
+{
+  "artifact_version": 1,
+  "created_at_utc": "2026-10-05T18:20:19.124855+00:00",
+  "ticker": "BTC-USD",
+  "currency": "USD",
+  "frequency": "daily",
+  "target": "next daily close",
+  "target_transform": "natural_log",
+  "source": {
+    "provider": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/quote/BTC-USD/history/",
+    "acquisition": "CSV local: data/btc_usd_daily.csv"
+  },
+  "training": {
+    "observations": 3200,
+    "start": "2018-01-01",
+    "end": "2026-10-05"
+  },
+  "model": {
+    "library": "prophet",
+    "seasonality_mode": "multiplicative",
+    "yearly_seasonality": true,
+    "weekly_seasonality": true,
+    "interval_width": 0.8
+  },
+  "validation": {
+    "strategy": "holdout cronológico",
+    "test_observations": 90,
+    "test_start": "2026-07-08",
+    "test_end": "2026-10-05",
+    "prophet": {
+      "mae_usd": 14848.92,
+      "rmse_usd": 18002.76,
+      "mape_percent": 22.26,
+      "directional_accuracy_percent": 52.22,
+      "interval_coverage_percent": 52.22
+    },
+    "naive_baseline": {
+      "mae_usd": 9422.55,
+      "rmse_usd": 12595.06,
+      "mape_percent": 11.81
+    }
+  },
+  "example_prediction": {
+    "date": "2026-10-06",
+    "predicted_close": 73819.85,
+    "predicted_lower": 63624.16,
+    "predicted_upper": 86190.25,
+    "currency": "USD"
+  },
+  "limitations": [
+    "O modelo usa somente data e preço histórico de fechamento.",
+    "Eventos, notícias, volume e variáveis macroeconômicas não são considerados.",
+    "A previsão é experimental e não constitui recomendação financeira."
+  ]
+}

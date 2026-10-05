@@ -1,0 +1,21 @@
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: training/Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+      - ./results:/app/results
+    profiles:
+      - training
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+    restart: unless-stopped
